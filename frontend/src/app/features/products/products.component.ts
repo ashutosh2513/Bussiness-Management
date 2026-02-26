@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component({
+  standalone: true,
+  template: `
+  <h2 class="text-2xl font-semibold mb-2">Products & Categories</h2>
+  <p>Enterprise-ready product catalog UI blueprint: category tree, units, barcode preview, stock warnings.</p>
+  <div class="mt-4 grid gap-2">
+    <div class="bg-white rounded p-3 shadow">Category tree panel</div>
+    <div class="bg-white rounded p-3 shadow">Product table with filters, barcode and low-stock tag</div>
+  </div>`
+})
+export class ProductsComponent {}
