@@ -1,0 +1,4 @@
+-- Optional production migrations should be managed with Flyway/Liquibase.
+-- Core entities:
+-- users, customers, categories, units, products, inventory_movements,
+-- invoices, invoice_items, payments, ledger_entries, business_settings
