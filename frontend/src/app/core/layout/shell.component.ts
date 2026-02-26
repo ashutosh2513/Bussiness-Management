@@ -1,0 +1,30 @@
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../services/auth.service';
+
+@Component({
+  selector: 'app-shell',
+  standalone: true,
+  imports: [RouterLink, NgIf],
+  template: `
+  <div class="min-h-screen grid grid-cols-1 md:grid-cols-[240px_1fr] bg-slate-50">
+    <aside class="bg-slate-900 text-white p-4">
+      <h1 class="font-bold text-xl">SmartBilling</h1>
+      <p class="text-xs text-slate-300 mt-1" *ngIf="auth.session() as s">{{s.fullName}} • {{s.role}}</p>
+      <nav class="mt-4 space-y-2">
+        <a routerLink="/" class="block">Landing</a>
+        <a routerLink="/dashboard" class="block">Dashboard</a>
+        <a routerLink="/billing" class="block">Billing</a>
+        <a routerLink="/products" class="block">Products</a>
+        <a routerLink="/login" class="block">Login</a>
+        <a routerLink="/register" class="block">Register</a>
+        <button *ngIf="auth.session()" (click)="auth.logout()" class="text-left text-rose-300">Logout</button>
+      </nav>
+    </aside>
+    <main class="p-4"><ng-content /></main>
+  </div>`
+})
+export class ShellComponent {
+  auth = inject(AuthService);
+}

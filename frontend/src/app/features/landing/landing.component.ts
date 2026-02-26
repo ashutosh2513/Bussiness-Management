@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  standalone: true,
+  imports: [RouterLink],
+  template: `
+  <section class="bg-gradient-to-br from-indigo-600 to-violet-700 text-white rounded-2xl p-8 md:p-12 shadow">
+    <p class="uppercase tracking-[0.25em] text-xs opacity-90">SmartBilling</p>
+    <h1 class="text-3xl md:text-5xl font-bold mt-3 max-w-3xl">GST-ready billing, inventory and accounting for modern businesses.</h1>
+    <p class="mt-4 max-w-2xl text-indigo-100">Run POS billing, generate invoices, track stock, manage ledgers, and monitor payments across mobile, tablet, and desktop.</p>
+    <div class="flex gap-3 mt-6">
+      <a routerLink="/register" class="bg-white text-indigo-700 px-4 py-2 rounded font-semibold">Create Account</a>
+      <a routerLink="/login" class="border border-white px-4 py-2 rounded">Login</a>
+    </div>
+  </section>
+
+  <section class="grid md:grid-cols-3 gap-4 mt-6">
+    <article class="bg-white p-4 rounded-xl shadow">
+      <h3 class="font-semibold">Retail Billing</h3>
+      <p class="text-sm text-slate-600 mt-1">Fast cart, multiple payment modes, GST invoice generation and PDF print.</p>
+    </article>
+    <article class="bg-white p-4 rounded-xl shadow">
+      <h3 class="font-semibold">Inventory Control</h3>
+      <p class="text-sm text-slate-600 mt-1">Stock movements, low stock alerts, and category + unit management.</p>
+    </article>
+    <article class="bg-white p-4 rounded-xl shadow">
+      <h3 class="font-semibold">Accounting & Ledger</h3>
+      <p class="text-sm text-slate-600 mt-1">Track dues, partial payments, and customer-wise transaction history.</p>
+    </article>
+  </section>
+  `
+})
+export class LandingComponent {}
