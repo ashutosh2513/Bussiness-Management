@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, RouterLink, NgFor],
+  imports: [FormsModule, RouterLink, NgFor, NgIf],
   template: `
   <div class="max-w-lg mx-auto bg-white p-6 rounded-xl shadow">
     <h2 class="text-2xl font-semibold">Create your account</h2>
