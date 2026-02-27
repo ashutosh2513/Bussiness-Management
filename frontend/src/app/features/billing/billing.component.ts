@@ -7,28 +7,8 @@ import { ApiService } from '../../core/services/api.service';
 @Component({
   standalone: true,
   imports: [FormsModule, NgFor],
-  template: `
-  <h2 class="text-2xl font-semibold">POS Billing</h2>
-
-  <div class="grid md:grid-cols-3 gap-4 mt-4">
-    <div class="md:col-span-2 bg-white p-4 rounded shadow">
-      <input [(ngModel)]="customerQuery" (ngModelChange)="searchCustomer()" placeholder="Search customer" class="border p-2 w-full" />
-      <select [(ngModel)]="selectedCustomer" class="border p-2 w-full mt-2">
-        <option *ngFor="let c of customers()" [value]="c.id">{{c.name}} - {{c.phone}}</option>
-      </select>
-      <div class="mt-4">Quick add customer and product browser can be plugged in as Material dialogs.</div>
-    </div>
-    <div class="bg-white p-4 rounded shadow">
-      <div *ngFor="let i of cart.items()">{{i.name}} x {{i.qty}} = {{i.qty*i.price}}</div>
-      <hr class="my-2"/>
-      <div>Total: {{cart.total()}}</div>
-      <select [(ngModel)]="paymentMethod" class="border p-2 w-full mt-2">
-        <option value="CASH">Cash</option><option value="UPI">UPI</option><option value="CARD">Card</option><option value="CREDIT">Credit</option>
-      </select>
-      <input type="number" [(ngModel)]="paidAmount" placeholder="Paid amount" class="border p-2 w-full mt-2" />
-      <button (click)="checkout()" class="mt-2 w-full bg-indigo-600 text-white p-2 rounded">Generate Invoice</button>
-    </div>
-  </div>`
+  templateUrl: './billing.component.html',
+  styleUrl: './billing.component.css'
 })
 export class BillingComponent {
   cart = inject(CartState);

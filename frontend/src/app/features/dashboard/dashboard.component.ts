@@ -6,14 +6,7 @@ import { ApiService } from '../../core/services/api.service';
   standalone: true,
   selector: 'app-dashboard',
   imports: [AsyncPipe, NgFor],
-  template: `
-    <h2 class="text-2xl font-semibold mb-4">Dashboard</h2>
-    <div *ngIf="data$ | async as d" class="grid md:grid-cols-4 gap-4">
-      <div class="bg-white p-4 rounded shadow">Revenue: {{d.todayRevenue | number:'1.2-2'}}</div>
-      <div class="bg-white p-4 rounded shadow">Outstanding: {{d.outstandingDues | number:'1.2-2'}}</div>
-      <div class="bg-white p-4 rounded shadow">Low Stock: {{d.lowStockItems}}</div>
-      <div class="bg-white p-4 rounded shadow">Top: <span *ngFor="let i of d.topItems">{{i}} </span></div>
-    </div>
-  `
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent { data$ = inject(ApiService).dashboard(); }
