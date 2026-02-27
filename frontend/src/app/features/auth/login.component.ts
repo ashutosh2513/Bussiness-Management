@@ -10,7 +10,7 @@ import { AuthService } from '../../core/services/auth.service';
   template: `
   <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow">
     <h2 class="text-2xl font-semibold">Login</h2>
-    <p class="text-slate-600 text-sm mt-1">Access your SmartBilling workspace.</p>
+    <p class="text-slate-600 text-sm mt-1">Access your SmartBilling workspace. Anytime</p>
     <input [(ngModel)]="email" placeholder="Email" class="border p-2 w-full mt-4 rounded" />
     <input [(ngModel)]="password" type="password" placeholder="Password" class="border p-2 w-full mt-3 rounded" />
     <button (click)="submit()" class="w-full mt-4 bg-indigo-600 text-white p-2 rounded">Login</button>
