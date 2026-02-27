@@ -3,4 +3,3 @@ frontend/dist/
 frontend/.angular/
 backend/target/
 frontend/package-lock.json
-frontend/package.json
