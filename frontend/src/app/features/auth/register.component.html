@@ -1,12 +1,71 @@
-<div class="max-w-lg mx-auto bg-white p-6 rounded-xl shadow">
-  <h2 class="text-2xl font-semibold">Create your account</h2>
-  <input [(ngModel)]="fullName" placeholder="Full name" class="border p-2 w-full mt-4 rounded" />
-  <input [(ngModel)]="email" placeholder="Email" class="border p-2 w-full mt-3 rounded" />
-  <input [(ngModel)]="password" type="password" placeholder="Password" class="border p-2 w-full mt-3 rounded" />
-  <select [(ngModel)]="role" class="border p-2 w-full mt-3 rounded">
-    <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
-  </select>
-  <button (click)="submit()" class="w-full mt-4 bg-indigo-600 text-white p-2 rounded">Register</button>
-  <p class="text-red-600 text-sm mt-2" *ngIf="error">{{ error }}</p>
-  <a routerLink="/login" class="text-indigo-600 text-sm mt-4 block">Already registered? Login</a>
+<div class="auth-page auth-register">
+  <section class="auth-card">
+    <header class="card-topbar">
+      <a class="brand" routerLink="/">
+        <span class="brand-mark"></span>
+        <span class="brand-text">LOGO</span>
+      </a>
+
+      <nav class="mini-nav" aria-label="Auth navigation">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link">Pricing</a>
+      </nav>
+
+      <a routerLink="/login" class="top-cta">Log In</a>
+    </header>
+
+    <div class="card-body register-layout">
+      <div class="hero-pane" aria-hidden="true">
+        <img src="assets/landing/auth-register-hero.svg" alt="" class="hero-main" />
+      </div>
+
+      <div class="auth-pane">
+        <h1>Create <span>Account</span></h1>
+        <p class="subtitle">Grow &amp; Manage Your Business</p>
+        <div class="accent-line"></div>
+
+        <form (ngSubmit)="submit()" class="auth-form">
+          <label class="input-label">Full Name</label>
+          <div class="input-wrap">
+            <span class="input-icon">&#128100;</span>
+            <input [(ngModel)]="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
+          </div>
+
+          <label class="input-label">Email Address</label>
+          <div class="input-wrap">
+            <span class="input-icon">&#9993;</span>
+            <input [(ngModel)]="email" name="email" type="email" placeholder="Enter your email" required />
+          </div>
+
+          <label class="input-label">Phone Number</label>
+          <div class="input-wrap">
+            <span class="input-icon">&#128222;</span>
+            <input [(ngModel)]="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+          </div>
+
+          <label class="input-label">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">&#128274;</span>
+            <input [(ngModel)]="password" name="password" [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" required />
+            <button type="button" class="eye-btn" (click)="showPassword = !showPassword" aria-label="Toggle password visibility">&#128065;</button>
+          </div>
+
+          <button type="submit" class="primary-btn">Create Account <span>&#8594;</span></button>
+
+          <p class="divider"><span>Or sign up with</span></p>
+          <div class="social-row">
+            <button type="button" class="social-btn"><span class="social-g">G</span> Google</button>
+            <button type="button" class="social-btn"><span class="social-f">f</span> Facebook</button>
+          </div>
+
+          <p class="error" *ngIf="error">{{ error }}</p>
+        </form>
+      </div>
+
+      <div class="bottom-art" aria-hidden="true">
+        <img src="assets/landing/auth-register-bottom.svg" alt="" />
+      </div>
+    </div>
+  </section>
 </div>

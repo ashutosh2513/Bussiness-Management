@@ -16,7 +16,9 @@ export class RegisterComponent {
 
   fullName = '';
   email = '';
+  phone = '';
   password = '';
+  showPassword = false;
   role = 'RETAILER';
   error = '';
   roles = ['MANUFACTURER', 'DISTRIBUTOR', 'RETAILER', 'ACCOUNTANT', 'FIELD_AGENT', 'END_CONSUMER'];
@@ -28,7 +30,7 @@ export class RegisterComponent {
         this.auth.setSession(res);
         this.router.navigateByUrl('/dashboard');
       },
-      error: () => this.error = 'Unable to register (email may already exist)'
+      error: () => (this.error = 'Unable to register (email may already exist)')
     });
   }
 }

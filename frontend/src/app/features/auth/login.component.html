@@ -1,9 +1,65 @@
-<div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow">
-  <h2 class="text-2xl font-semibold">Login</h2>
-  <p class="text-slate-600 text-sm mt-1">Access your SmartBilling workspace.</p>
-  <input [(ngModel)]="email" placeholder="Email" class="border p-2 w-full mt-4 rounded" />
-  <input [(ngModel)]="password" type="password" placeholder="Password" class="border p-2 w-full mt-3 rounded" />
-  <button (click)="submit()" class="w-full mt-4 bg-indigo-600 text-white p-2 rounded">Login</button>
-  <p class="text-red-600 text-sm mt-2" *ngIf="error">{{ error }}</p>
-  <a routerLink="/register" class="text-indigo-600 text-sm mt-4 block">Don't have an account? Register</a>
+<div class="auth-page auth-login">
+  <section class="auth-card">
+    <header class="card-topbar">
+      <a class="brand" routerLink="/">
+        <span class="brand-mark"></span>
+        <span class="brand-text">LOGO</span>
+      </a>
+
+      <nav class="mini-nav" aria-label="Auth navigation">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link">Pricing</a>
+        <a href="#" class="nav-link">Contact</a>
+      </nav>
+
+      <a routerLink="/register" class="top-cta">Sign Up</a>
+    </header>
+
+    <div class="card-body two-col">
+      <div class="auth-pane">
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Login to <span>Manage Your Business</span></p>
+        <div class="accent-line"></div>
+
+        <form (ngSubmit)="submit()" class="auth-form">
+          <label class="input-label">Email Address</label>
+          <div class="input-wrap">
+            <span class="input-icon">&#9993;</span>
+            <input [(ngModel)]="email" name="email" type="email" placeholder="Enter your email" required />
+          </div>
+
+          <label class="input-label">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">&#128274;</span>
+            <input [(ngModel)]="password" name="password" [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" required />
+            <button type="button" class="eye-btn" (click)="showPassword = !showPassword" aria-label="Toggle password visibility">&#128065;</button>
+          </div>
+
+          <button type="submit" class="primary-btn">Login <span>&#8594;</span></button>
+
+          <div class="row-between options-row">
+            <label class="check-wrap">
+              <input [(ngModel)]="rememberMe" name="rememberMe" type="checkbox" />
+              <span>Remember Me</span>
+            </label>
+            <a href="#" class="help-link">Need Help? <strong>Contact Us</strong></a>
+          </div>
+
+          <p class="divider"><span>Or continue with</span></p>
+
+          <div class="social-row">
+            <button type="button" class="social-btn"><span class="social-g">G</span> Log in with Google</button>
+            <button type="button" class="social-btn"><span class="social-f">f</span> Facebook</button>
+          </div>
+
+          <p class="error" *ngIf="error">{{ error }}</p>
+        </form>
+      </div>
+
+      <div class="art-pane" aria-hidden="true">
+        <img src="assets/landing/auth-login.svg" alt="" />
+      </div>
+    </div>
+  </section>
 </div>

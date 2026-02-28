@@ -1,0 +1,68 @@
+<svg viewBox="0 0 700 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Login illustration</title>
+  <desc id="d">Business user logging in with dashboard and security badge.</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3f8ff"/>
+      <stop offset="1" stop-color="#dbe9fb"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#65a9f0"/>
+      <stop offset="1" stop-color="#226fcb"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="400" cy="390" rx="250" ry="24" fill="#dbe6f6"/>
+  <ellipse cx="450" cy="180" rx="220" ry="160" fill="url(#g1)"/>
+
+  <path d="M100 265 C150 220,235 222,278 260 C325 232,412 230,470 260 C530 230,620 230,675 272 L675 355 L100 355 Z" fill="#eaf1fb"/>
+
+  <g transform="translate(285 84)">
+    <rect x="0" y="0" width="255" height="156" rx="14" fill="#2a4568"/>
+    <rect x="12" y="12" width="231" height="132" rx="10" fill="#f9fcff"/>
+    <rect x="24" y="28" width="66" height="52" rx="6" fill="#edf4ff" stroke="#cfe0f6"/>
+    <circle cx="55" cy="55" r="14" fill="#6fb2ec"/>
+    <path d="M55 55 L55 41 A14 14 0 0 1 68 62 Z" fill="#3c86d8"/>
+    <rect x="98" y="28" width="130" height="52" rx="6" fill="#f3f8ff" stroke="#d6e5f7"/>
+    <polyline points="110,67 128,52 148,58 169,44 191,55 212,37" fill="none" stroke="#5a9ce0" stroke-width="3"/>
+    <rect x="24" y="88" width="205" height="44" rx="6" fill="#f3f8ff" stroke="#d6e5f7"/>
+    <rect x="36" y="102" width="12" height="18" rx="2" fill="#8ebde9"/>
+    <rect x="52" y="96" width="12" height="24" rx="2" fill="#6ea9e4"/>
+    <rect x="68" y="90" width="12" height="30" rx="2" fill="#4f93dc"/>
+    <rect x="84" y="84" width="12" height="36" rx="2" fill="#337ecf"/>
+  </g>
+
+  <g transform="translate(212 208)">
+    <ellipse cx="130" cy="112" rx="140" ry="18" fill="#d7e3f4"/>
+    <polygon points="32,98 225,98 205,116 54,116" fill="#8aa9cc"/>
+    <rect x="22" y="0" width="220" height="106" rx="12" fill="#304c71"/>
+    <rect x="33" y="12" width="198" height="76" rx="8" fill="#f8fbff"/>
+    <rect x="44" y="23" width="50" height="8" rx="4" fill="#d2e1f4"/>
+    <rect x="44" y="37" width="170" height="6" rx="3" fill="#d8e5f4"/>
+    <rect x="44" y="49" width="144" height="6" rx="3" fill="#d8e5f4"/>
+    <rect x="44" y="61" width="122" height="6" rx="3" fill="#d8e5f4"/>
+  </g>
+
+  <g transform="translate(510 54)">
+    <path d="M40 0 L92 22 L92 74 C92 102,69 124,40 132 C11 124,-12 102,-12 74 L-12 22 Z" fill="#2d87e3"/>
+    <path d="M40 10 L82 28 L82 72 C82 94,64 111,40 118 C16 111,-2 94,-2 72 L-2 28 Z" fill="#66b1f2"/>
+    <rect x="26" y="51" width="28" height="22" rx="5" fill="#ffffff"/>
+    <path d="M32 50 V44 A8 8 0 0 1 48 44 V50" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <circle cx="40" cy="61" r="3" fill="#2d87e3"/>
+  </g>
+
+  <g transform="translate(470 180)">
+    <circle cx="52" cy="44" r="24" fill="#f4c9a8"/>
+    <path d="M28 42 C28 24,44 12,62 18 C71 21,77 29,78 38 C67 42,47 44,28 42 Z" fill="#1f3657"/>
+    <rect x="26" y="68" width="78" height="86" rx="22" fill="url(#g2)"/>
+    <rect x="34" y="112" width="72" height="52" rx="18" fill="#275d9e"/>
+    <rect x="46" y="124" width="52" height="58" rx="10" fill="#2c3f5e"/>
+    <rect x="2" y="98" width="46" height="26" rx="4" fill="#f2f7ff" stroke="#cad9ee" transform="rotate(-14 2 98)"/>
+    <line x1="16" y1="109" x2="36" y2="104" stroke="#89a6ca" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(560 200)">
+    <path d="M36 0 C20 7,10 24,10 44 C10 62,19 78,36 88 C25 63,24 24,36 0 Z" fill="#7fbf6a"/>
+    <path d="M66 4 C48 14,36 35,36 57 C36 72,42 86,54 96 C52 69,56 31,66 4 Z" fill="#5aa84f"/>
+  </g>
+</svg>
