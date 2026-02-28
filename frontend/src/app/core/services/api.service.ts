@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private readonly base = 'http://localhost:8080/api';
+  private readonly base = (globalThis as any).__API_BASE_URL ?? '/api';
   constructor(private http: HttpClient) {}
 
   searchCustomers(q: string) { return this.http.get<any[]>(`${this.base}/customers/search?q=${q}`); }
