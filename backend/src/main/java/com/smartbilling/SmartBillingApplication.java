@@ -7,5 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SmartBillingApplication {
     public static void main(String[] args) {
         SpringApplication.run(SmartBillingApplication.class, args);
+        System.out.println("Smart Billing Application started successfully!");
     }
 }

@@ -113,6 +113,40 @@ deploy/
 4. Enable HTTPS via certbot/managed certs.
 5. Configure observability (Prometheus + Grafana + centralized logs).
 
+### Quick Shared Server Setup (Docker Compose)
+
+1. Provision one Linux server (Ubuntu 22.04+), install Docker + Docker Compose.
+2. Clone this repo on server.
+3. Start full stack:
+
+```bash
+cd deploy
+docker compose up -d --build
+```
+
+4. App will be available on `http://<server-ip>/`.
+5. All developers use the same deployed app URL and same PostgreSQL data volume (`pg_data`).
+
+Notes:
+- Backend DB/server settings are environment-driven (`SPRING_DATASOURCE_*`, `SERVER_PORT`).
+- CORS origins are configurable with `APP_CORS_ORIGINS` (comma-separated).
+
+### Hosted Setup (Supabase + Render + Vercel)
+
+- Supabase project URL: `https://ldedhxcilbgfgmpnocht.supabase.co`
+- Backend (Render): `https://business-management-hyoh.onrender.com`
+- Frontend (Vercel): `https://business-management-alpha.vercel.app/`
+
+Render environment variables:
+- `SPRING_DATASOURCE_URL=jdbc:postgresql://db.<project-ref>.supabase.co:5432/postgres?sslmode=require`
+- `SPRING_DATASOURCE_USERNAME=<supabase_db_user>`
+- `SPRING_DATASOURCE_PASSWORD=<supabase_db_password>`
+- `APP_CORS_ORIGINS=https://business-management-alpha.vercel.app,http://localhost:4200`
+- `SERVER_PORT=10000`
+
+Vercel:
+- `frontend/vercel.json` rewrites `/api/*` to Render backend, so frontend can keep using relative `/api`.
+
 ## 9) CI/CD Plan
 
 - On PR: run backend unit tests + lint + frontend build checks.

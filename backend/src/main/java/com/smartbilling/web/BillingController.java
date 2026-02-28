@@ -16,7 +16,7 @@ public class BillingController {
     private final BillingService billingService;
 
     @GetMapping("/customers/search")
-    public List<Customer> customerSearch(@RequestParam(required = false) String q) {
+    public List<Customer> customerSearch(@RequestParam(name = "q", required = false) String q) {
         return billingService.searchCustomers(q);
     }
 
