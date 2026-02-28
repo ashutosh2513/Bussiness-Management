@@ -16,6 +16,8 @@ export class LoginComponent {
 
   email = '';
   password = '';
+  rememberMe = false;
+  showPassword = false;
   error = '';
 
   submit() {
@@ -25,7 +27,7 @@ export class LoginComponent {
         this.auth.setSession(res);
         this.router.navigateByUrl('/dashboard');
       },
-      error: () => this.error = 'Invalid credentials'
+      error: () => (this.error = 'Invalid credentials')
     });
   }
 }
