@@ -1,24 +1,165 @@
-<section class="bg-gradient-to-br from-indigo-600 to-violet-700 text-white rounded-2xl p-8 md:p-12 shadow">
-  <p class="uppercase tracking-[0.25em] text-xs opacity-90">SmartBilling</p>
-  <h1 class="text-3xl md:text-5xl font-bold mt-3 max-w-3xl">GST-ready billing, inventory and accounting for modern businesses.</h1>
-  <p class="mt-4 max-w-2xl text-indigo-100">Run POS billing, generate invoices, track stock, manage ledgers, and monitor payments across mobile, tablet, and desktop.</p>
-  <div class="flex gap-3 mt-6">
-    <a routerLink="/register" class="bg-white text-indigo-700 px-4 py-2 rounded font-semibold">Create Account</a>
-    <a routerLink="/login" class="border border-white px-4 py-2 rounded">Login</a>
-  </div>
-</section>
+<div class="landing-page">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" routerLink="/">
+        <span class="brand-mark"></span>
+        <span class="brand-text">LOGO</span>
+      </a>
 
-<section class="grid md:grid-cols-3 gap-4 mt-6">
-  <article class="bg-white p-4 rounded-xl shadow">
-    <h3 class="font-semibold">Retail Billing</h3>
-    <p class="text-sm text-slate-600 mt-1">Fast cart, multiple payment modes, GST invoice generation and PDF print.</p>
-  </article>
-  <article class="bg-white p-4 rounded-xl shadow">
-    <h3 class="font-semibold">Inventory Control</h3>
-    <p class="text-sm text-slate-600 mt-1">Stock movements, low stock alerts, and category + unit management.</p>
-  </article>
-  <article class="bg-white p-4 rounded-xl shadow">
-    <h3 class="font-semibold">Accounting & Ledger</h3>
-    <p class="text-sm text-slate-600 mt-1">Track dues, partial payments, and customer-wise transaction history.</p>
-  </article>
-</section>
+      <nav class="menu" aria-label="Primary">
+        <a href="#" class="menu-link">Home</a>
+        <a href="#features" class="menu-link">Features</a>
+        <a href="#pricing" class="menu-link">Pricing</a>
+        <a href="#contact" class="menu-link">Contact</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <a routerLink="/login" class="signin">Sign In</a>
+        <a routerLink="/register" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Simplify &amp; Manage<br />Your Business Efficiently</h1>
+        <p>
+          All-in-one platform to streamline your inventory, sales, and
+          operations.
+        </p>
+        <div class="hero-actions">
+          <a routerLink="/register" class="btn btn-primary">Get Started</a>
+          <a href="#" class="btn btn-outline">
+            <span class="play-icon">&#9658;</span>
+            Watch Demo
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <img
+          class="hero-svg"
+          src="/assets/landing/hero-scene.svg"
+          alt="Illustration of a person managing business tasks"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="service-cards">
+    <div class="container cards-grid cards-grid-2">
+      <article class="card card-horizontal">
+        <img
+          class="icon-svg"
+          src="/assets/landing/feature-inventory.svg"
+          alt="Inventory icon"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <h3>Inventory Management</h3>
+          <p>Track stock levels and manage products with ease.</p>
+        </div>
+      </article>
+
+      <article class="card card-horizontal">
+        <img
+          class="icon-svg"
+          src="/assets/landing/feature-billing.svg"
+          alt="Billing icon"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <h3>Billing &amp; Invoicing</h3>
+          <p>Generate bills and invoices in just a few clicks.</p>
+        </div>
+      </article>
+
+      <article class="card card-horizontal">
+        <img
+          class="icon-svg"
+          src="/assets/landing/feature-sales.svg"
+          alt="Sales analytics icon"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <h3>Sales &amp; Profit Analysis</h3>
+          <p>Monitor sales performance and profitability.</p>
+        </div>
+      </article>
+
+      <article class="card card-horizontal">
+        <img
+          class="icon-svg"
+          src="/assets/landing/feature-orders.svg"
+          alt="Order tracking icon"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <h3>Order &amp; Stock Tracking</h3>
+          <p>Manage orders and track stock movements.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="tools" id="pricing">
+    <div class="container">
+      <h2><span>Grow Your Business</span> with Powerful Tools</h2>
+
+      <div class="cards-grid cards-grid-3">
+        <article class="card card-vertical">
+          <img
+            class="preview-svg"
+            src="/assets/landing/tool-dashboard.svg"
+            alt="Dashboard preview"
+            loading="lazy"
+            decoding="async"
+          />
+          <h3>Easy to Use Dashboard</h3>
+          <p>Get insights at a glance with our intuitive dashboard.</p>
+        </article>
+
+        <article class="card card-vertical">
+          <img
+            class="preview-svg"
+            src="/assets/landing/tool-reports.svg"
+            alt="Reports and analytics preview"
+            loading="lazy"
+            decoding="async"
+          />
+          <h3>Reports &amp; Analytics</h3>
+          <p>Detailed reports to help you make informed decisions.</p>
+        </article>
+
+        <article class="card card-vertical">
+          <img
+            class="preview-svg"
+            src="/assets/landing/tool-team.svg"
+            alt="Team collaboration preview"
+            loading="lazy"
+            decoding="async"
+          />
+          <h3>Multi-User Access</h3>
+          <p>Collaborate with your team securely.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="container cta-inner">
+      <h2>Get Started Today!</h2>
+      <p>Join thousands of businesses streamlining their operations.</p>
+      <a routerLink="/register" class="btn btn-primary btn-large"
+        >Sign Up for Free</a
+      >
+    </div>
+  </section>
+</div>
