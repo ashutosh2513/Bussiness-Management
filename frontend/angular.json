@@ -14,9 +14,18 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+<<<<<<< HEAD
             "assets": ["src/assets"],
             "styles": ["src/styles.css"],
             "stylePreprocessorOptions": { "includePaths": [] }
+=======
+
+            "assets": ["src/assets"],
+
+            "styles": ["src/styles.css"],
+            "stylePreprocessorOptions": { "includePaths": [] }
+
+>>>>>>> 220923f40bf6339ba24af396b4b590375dc8fc19
           }
         },
         "serve": {
