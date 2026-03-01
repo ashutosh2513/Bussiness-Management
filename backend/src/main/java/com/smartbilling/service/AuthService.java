@@ -3,21 +3,21 @@ package com.smartbilling.service;
 import com.smartbilling.domain.User;
 import com.smartbilling.dto.AuthDtos;
 import com.smartbilling.repository.UserRepository;
+import com.smartbilling.security.JwtService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.time.Instant;
-import java.util.Base64;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     @Transactional
     public AuthDtos.AuthResponse register(AuthDtos.RegisterRequest request) {
@@ -48,8 +48,13 @@ public class AuthService {
     }
 
     private AuthDtos.AuthResponse buildAuthResponse(User user) {
-        String tokenPayload = user.getId() + ":" + user.getEmail() + ":" + user.getRole() + ":" + Instant.now().getEpochSecond();
-        String token = Base64.getUrlEncoder().withoutPadding().encodeToString(tokenPayload.getBytes(StandardCharsets.UTF_8));
+        String token = jwtService.generateToken(
+                user.getEmail(),
+                Map.of(
+                        "uid", user.getId().toString(),
+                        "role", user.getRole().name()
+                )
+        );
         return new AuthDtos.AuthResponse(token, user.getFullName(), user.getEmail(), user.getRole());
     }
 }
