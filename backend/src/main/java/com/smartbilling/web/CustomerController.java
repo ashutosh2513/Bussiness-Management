@@ -1,0 +1,19 @@
+package com.smartbilling.web;
+
+import com.smartbilling.dto.CustomerDtos;
+import com.smartbilling.service.CustomerService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/customers")
+@RequiredArgsConstructor
+public class CustomerController {
+    private final CustomerService customerService;
+
+    @PostMapping
+    public CustomerDtos.CustomerResponse createCustomer(@Valid @RequestBody CustomerDtos.CreateCustomerRequest request) {
+        return customerService.createCustomer(request);
+    }
+}
