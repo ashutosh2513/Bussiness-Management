@@ -1,5 +1,6 @@
 package com.smartbilling.service;
 
+import com.smartbilling.common.AuditableAction;
 import com.smartbilling.domain.*;
 import com.smartbilling.dto.BillingDtos;
 import com.smartbilling.repository.*;
@@ -21,6 +22,7 @@ public class BillingService {
     private final InventoryMovementRepository inventoryMovementRepository;
 
     @Transactional
+    @AuditableAction("INVOICE_CREATE")
     public BillingDtos.InvoiceSummary createInvoice(BillingDtos.CreateInvoiceRequest request) {
         Customer customer = customerRepository.findById(request.customerId()).orElseThrow(() -> new IllegalArgumentException("Customer not found"));
         Invoice invoice = new Invoice();
@@ -64,6 +66,7 @@ public class BillingService {
     }
 
     @Transactional
+    @AuditableAction("PAYMENT_CREATE")
     public void createPayment(BillingDtos.PaymentRequest request) {
         Invoice invoice = invoiceRepository.findById(request.invoiceId()).orElseThrow(() -> new IllegalArgumentException("Invoice not found"));
         invoice.setPaidAmount(invoice.getPaidAmount() + request.amount());
