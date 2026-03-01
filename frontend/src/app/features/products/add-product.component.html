@@ -1,0 +1,83 @@
+<mat-card class="product-card">
+  <mat-card-title>Add Product</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" />
+          @if (productForm.controls.name.touched && productForm.controls.name.hasError('required')) {
+            <mat-error>Name is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="categoryId">
+            @for (category of categories; track category.id) {
+              <mat-option [value]="category.id">{{ category.name }}</mat-option>
+            }
+          </mat-select>
+          @if (productForm.controls.categoryId.touched && productForm.controls.categoryId.hasError('required')) {
+            <mat-error>Category is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Unit</mat-label>
+          <mat-select formControlName="unitId">
+            @for (unit of units; track unit.id) {
+              <mat-option [value]="unit.id">{{ unit.name }}</mat-option>
+            }
+          </mat-select>
+          @if (productForm.controls.unitId.touched && productForm.controls.unitId.hasError('required')) {
+            <mat-error>Unit is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>SKU Code</mat-label>
+          <input matInput type="text" formControlName="skuCode" />
+          @if (productForm.controls.skuCode.touched && productForm.controls.skuCode.hasError('required')) {
+            <mat-error>SKU code is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Purchase Price</mat-label>
+          <input matInput type="number" formControlName="purchasePrice" />
+          @if (productForm.controls.purchasePrice.touched && productForm.controls.purchasePrice.hasError('required')) {
+            <mat-error>Purchase price is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Selling Price</mat-label>
+          <input matInput type="number" formControlName="sellingPrice" />
+          @if (productForm.controls.sellingPrice.touched && productForm.controls.sellingPrice.hasError('required')) {
+            <mat-error>Selling price is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>GST %</mat-label>
+          <input matInput type="number" formControlName="gstPercent" />
+          @if (productForm.controls.gstPercent.touched && productForm.controls.gstPercent.hasError('required')) {
+            <mat-error>GST percent is required</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <input type="hidden" formControlName="retailerId" />
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="submitting || loadingOptions"
+      >
+        Save Product
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
