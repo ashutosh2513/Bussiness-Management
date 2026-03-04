@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
+import { ShellComponent } from '../../core/layout/shell.component';
 
 interface DashboardData {
   todayRevenue?: number;
@@ -14,7 +14,7 @@ interface DashboardData {
 @Component({
   standalone: true,
   selector: 'app-dashboard',
-  imports: [AsyncPipe, NgFor, NgIf, RouterLink],
+  imports: [AsyncPipe, NgFor, NgIf, ShellComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

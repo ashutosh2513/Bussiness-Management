@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, NgModule } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
+import { DashboardComponent } from "./features/dashboard/dashboard.component";
+import { ShellComponent } from "./core/layout/shell.component";
 
 @Component({
   selector: "app-root",
