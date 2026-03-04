@@ -1,0 +1,138 @@
+﻿<div class="customers-page">
+  <div class="customers-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-badge">SB</div>
+        <div class="brand-text">SmartBilling</div>
+      </div>
+
+      <div class="nav-group">
+        <p class="group-title">MAIN</p>
+        <a routerLink="/dashboard" class="nav-item">Dashboard</a>
+        <a routerLink="/billing" class="nav-item">Billing / POS</a>
+        <a href="#" class="nav-item">Invoices</a>
+      </div>
+
+      <div class="nav-group">
+        <p class="group-title">CATALOG</p>
+        <a routerLink="/products" class="nav-item">Products</a>
+        <a href="#" class="nav-item">Inventory <span class="pill">3</span></a>
+        <a href="#" class="nav-item">Categories</a>
+      </div>
+
+      <div class="nav-group">
+        <p class="group-title">PEOPLE</p>
+        <a routerLink="/customers" class="nav-item active">Customers</a>
+        <a href="#" class="nav-item">Suppliers</a>
+      </div>
+
+      <div class="nav-group">
+        <p class="group-title">FINANCE</p>
+        <a href="#" class="nav-item">Ledger</a>
+        <a href="#" class="nav-item">Payments</a>
+      </div>
+
+      <a href="#" class="help-docs">Help &amp; Docs</a>
+
+      <div class="sidebar-foot">
+        <a href="#" class="foot-link">Help</a>
+        <a href="#" class="foot-link">Help &amp; Docs</a>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="title-row">
+          <button class="menu-btn" type="button">Menu</button>
+          <h1>Customers</h1>
+        </div>
+        <div class="search-wrap">
+          <span>S</span>
+          <input type="text" placeholder="Search products, invoices, customers..." />
+          <span>V</span>
+          <div class="avatar">U</div>
+        </div>
+      </header>
+
+      <section class="hero-wrap">
+        <div class="hero-text">
+          <h2>Customers</h2>
+          <div class="toolbar">
+            <input type="text" placeholder="Search customers..." />
+            <button type="button" class="btn ghost">Filter</button>
+            <button type="button" class="btn ghost">Blacklist</button>
+            <a routerLink="/customers/add" class="btn primary">+ Add Customer</a>
+          </div>
+          <div class="chips">
+            <button type="button" class="chip active-chip">Active 312</button>
+            <button type="button" class="chip">Blacklisted 0</button>
+            <button type="button" class="chip">Total Due &gt; 0</button>
+            <span class="sort">Sort By: <strong>Recently Added</strong></span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="blob"></div>
+          <img src="/assets/landing/auth-login.svg" alt="" />
+        </div>
+      </section>
+
+      <section class="table-card">
+        <div class="table-actions">
+          <div class="left-actions">
+            <button type="button" class="small-btn">[ ]</button>
+            <button type="button" class="small-btn">Actions v</button>
+          </div>
+          <button type="button" class="small-btn">Reset v</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>[ ]</th>
+                <th>#</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Location</th>
+                <th>Total Orders</th>
+                <th>Total Due</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customers">
+                <td>[ ]</td>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>
+                  <div class="contact-main">{{ customer.phone }}</div>
+                  <small>{{ customer.email }}</small>
+                </td>
+                <td>{{ customer.location }}</td>
+                <td>{{ customer.totalOrders }}</td>
+                <td>
+                  <div class="orders-value">{{ customer.totalOrderValue }}</div>
+                  <small class="due">{{ customer.totalDue }}</small>
+                </td>
+                <td><span class="status">{{ customer.status }}</span></td>
+                <td><button type="button" class="edit-btn">Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <p>Showing 1 to 10 of 320 entries</p>
+          <div class="pages">
+            <button type="button">&lt;</button>
+            <button type="button" class="active-page">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button">&gt;</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>

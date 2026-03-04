@@ -7,6 +7,7 @@ import { LoginComponent } from "./features/auth/login.component";
 import { RegisterComponent } from "./features/auth/register.component";
 import { AddCustomerComponent } from "./features/customers/add-customer.component";
 import { AddProductComponent } from "./features/products/add-product.component";
+import { CustomersComponent } from "./features/customers/customers.component";
 
 export const routes: Routes = [
   { path: "", component: LandingComponent },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: "products", component: ProductsComponent },
   { path: "products/add", component: AddProductComponent },
   { path: "billing", component: BillingComponent },
+  { path: "customers", component: CustomersComponent },
   { path: "customers/add", component: AddCustomerComponent },
 ];

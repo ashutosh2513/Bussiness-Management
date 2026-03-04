@@ -1,6 +1,207 @@
-<h2 class="text-2xl font-semibold mb-2">Products & Categories</h2>
-<p>Enterprise-ready product catalog UI blueprint: category tree, units, barcode preview, stock warnings.</p>
-<div class="mt-4 grid gap-2">
-  <div class="bg-white rounded p-3 shadow">Category tree panel</div>
-  <div class="bg-white rounded p-3 shadow">Product table with filters, barcode and low-stock tag</div>
+<div class="products-page">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-badge">SB</div>
+      <div class="brand-text">SmartBilling</div>
+    </div>
+
+    <div class="nav-group">
+      <p class="group-title">MAIN</p>
+      <a routerLink="/products" class="nav-item active">Products</a>
+      <a routerLink="/billing" class="nav-item">Billing / POS</a>
+      <a routerLink="/dashboard" class="nav-item">Invoices</a>
+    </div>
+
+    <div class="nav-group">
+      <p class="group-title">CATALOG</p>
+      <a routerLink="/products" class="nav-item active-soft">Products</a>
+      <a href="#" class="nav-item">Inventory</a>
+      <a href="#" class="nav-item">Categories</a>
+    </div>
+
+    <div class="nav-group">
+      <p class="group-title">PEOPLE</p>
+      <a routerLink="/customers/add" class="nav-item">Customers</a>
+      <a href="#" class="nav-item">Suppliers</a>
+    </div>
+
+    <div class="nav-group">
+      <p class="group-title">FINANCE</p>
+      <a href="#" class="nav-item">Ledger</a>
+      <a href="#" class="nav-item">Payments</a>
+    </div>
+  </aside>
+
+  <main class="content-area">
+    <header class="topbar">
+      <div class="title-row">
+        <button class="menu-btn" type="button">=</button>
+        <h1>Products</h1>
+      </div>
+
+      <div class="search-wrap">
+        <input
+          type="text"
+          placeholder="Search products, invoices, customers..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="onFiltersChanged()"
+        />
+        <div class="avatar">AD</div>
+      </div>
+    </header>
+
+    <section class="products-shell">
+      <div class="section-head">
+        <h2>Products</h2>
+      </div>
+
+      <div class="controls-row">
+        <input
+          class="control-input"
+          type="text"
+          placeholder="Search products..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="onFiltersChanged()"
+        />
+
+        <select
+          class="control-select"
+          [(ngModel)]="stockFilter"
+          (ngModelChange)="onFiltersChanged()"
+        >
+          <option value="all">Filter</option>
+          <option value="in-stock">In Stock</option>
+          <option value="low-stock">Low Stock</option>
+          <option value="out-of-stock">Out of Stock</option>
+        </select>
+
+        <select
+          class="control-select"
+          [(ngModel)]="categoryFilter"
+          (ngModelChange)="onFiltersChanged()"
+        >
+          <option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+
+        <a routerLink="/products/add" class="btn-primary">+ Add Product</a>
+      </div>
+
+      <div class="stats-row">
+        <div class="summary-chip in">In Stock {{ inStockCount }}</div>
+        <div class="summary-chip low">Low Stock {{ lowStockCount }}</div>
+        <div class="summary-chip out">Out of Stock {{ outOfStockCount }}</div>
+
+        <div class="sort-wrap">
+          <label for="sort">Sort By:</label>
+          <select
+            id="sort"
+            class="control-select compact"
+            [(ngModel)]="sortBy"
+            (ngModelChange)="onFiltersChanged()"
+          >
+            <option value="recent">Recently Added</option>
+            <option value="priceAsc">Price: Low to High</option>
+            <option value="priceDesc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <section class="table-card">
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <button type="button" class="btn-secondary">Actions</button>
+          </div>
+          <button type="button" class="btn-secondary" (click)="resetFilters()">
+            Reset
+          </button>
+        </div>
+
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Stock Status</th>
+                <th>Active</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of paginatedProducts">
+                <td>{{ product.id }}</td>
+                <td>
+                  <div class="product-name">{{ product.name }}</div>
+                  <div class="sku">{{ product.skuCode }}</div>
+                </td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price | currency: 'INR' : 'symbol-narrow' : '1.0-0' : 'en-IN' }}</td>
+                <td>{{ product.stock }}</td>
+                <td>
+                  <span [class]="statusClass(product)">
+                    {{ stockState(product) }}
+                  </span>
+                </td>
+                <td>
+                  <span class="active-chip" [ngClass]="{ inactive: !product.active }">
+                    {{ product.active ? "Active" : "Inactive" }}
+                  </span>
+                </td>
+                <td>
+                  <button type="button" class="btn-edit">Edit</button>
+                </td>
+              </tr>
+              <tr *ngIf="!paginatedProducts.length">
+                <td colspan="8" class="empty-state">
+                  No products found for selected filters.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <p>
+            Showing {{ pageStart }} to {{ pageEnd }} of
+            {{ totalEntries }}
+            entries
+          </p>
+
+          <div class="pagination">
+            <button
+              type="button"
+              class="page-btn"
+              (click)="changePage(currentPage - 1)"
+              [disabled]="currentPage === 1"
+            >
+              Prev
+            </button>
+            <span class="page-indicator">{{ currentPage }} / {{ totalPages }}</span>
+            <button
+              type="button"
+              class="page-btn"
+              (click)="changePage(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+            >
+              Next
+            </button>
+            <select
+              class="control-select compact"
+              [(ngModel)]="pageSize"
+              (ngModelChange)="onFiltersChanged()"
+            >
+              <option *ngFor="let option of pageSizeOptions" [ngValue]="option">
+                {{ option }} / page
+              </option>
+            </select>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
 </div>

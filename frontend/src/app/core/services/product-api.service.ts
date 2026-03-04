@@ -5,6 +5,7 @@ import {
   ProductRequest,
   UnitOption,
 } from "../models/product.model";
+import { getAuthHeaders } from "./auth-header.util";
 
 @Injectable({ providedIn: "root" })
 export class ProductApiService {
@@ -23,6 +24,8 @@ export class ProductApiService {
   }
 
   createProduct(payload: ProductRequest) {
-    return this.http.post(`${this.base}/products`, payload);
+    return this.http.post(`${this.base}/products`, payload, {
+      headers: getAuthHeaders(),
+    });
   }
 }
