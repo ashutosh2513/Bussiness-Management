@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CustomerRequest } from "../models/customer.model";
+import { getAuthHeaders } from "./auth-header.util";
 
 @Injectable({ providedIn: "root" })
 export class CustomerApiService {
@@ -9,6 +10,8 @@ export class CustomerApiService {
   constructor(private http: HttpClient) {}
 
   saveCustomer(payload: CustomerRequest) {
-    return this.http.post(`${this.base}/customers`, payload);
+    return this.http.post(`${this.base}/customers/add`, payload, {
+      headers: getAuthHeaders(),
+    });
   }
 }

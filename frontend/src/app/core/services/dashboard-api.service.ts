@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { CustomerRequest } from "../models/customer.model";
+import { getAuthHeaders } from "./auth-header.util";
 
 @Injectable({ providedIn: "root" })
 export class DashboardApiService {
@@ -9,6 +9,8 @@ export class DashboardApiService {
   constructor(private http: HttpClient) {}
 
   fetchDashboardData() {
-    return this.http.get(`${this.base}/dashboard`);
+    return this.http.get(`${this.base}/dashboard`, {
+      headers: getAuthHeaders(),
+    });
   }
 }

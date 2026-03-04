@@ -26,4 +26,7 @@ export class ApiService {
   login(payload: any) {
     return this.http.post(`${this.base}/auth/login`, payload);
   }
+  saveCustomer(payload: any) {
+    return this.http.post(`${this.base}/customers/add`, payload);
+  }
 }
