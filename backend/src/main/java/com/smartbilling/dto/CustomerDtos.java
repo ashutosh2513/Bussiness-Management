@@ -1,7 +1,6 @@
 package com.smartbilling.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ public class CustomerDtos {
             String email,
             String gstNumber,
             String address,
-            @NotNull(message = "Retailer ID is required")
+            // Ignored on backend. Retailer is derived from logged-in user.
             UUID retailerId
     ) {}
 
