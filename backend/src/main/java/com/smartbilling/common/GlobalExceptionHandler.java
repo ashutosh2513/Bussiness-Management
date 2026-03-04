@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.util.Map;
@@ -27,6 +28,15 @@ public class GlobalExceptionHandler {
                 "timestamp", Instant.now(),
                 "error", "BUSINESS_ERROR",
                 "message", ex.getMessage()
+        ));
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    ResponseEntity<?> handleResponseStatus(ResponseStatusException ex) {
+        return ResponseEntity.status(ex.getStatusCode()).body(Map.of(
+                "timestamp", Instant.now(),
+                "error", "REQUEST_ERROR",
+                "message", ex.getReason() == null ? "Request failed" : ex.getReason()
         ));
     }
 }

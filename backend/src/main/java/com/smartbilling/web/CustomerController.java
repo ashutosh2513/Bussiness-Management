@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     private final CustomerService customerService;
 
-    @PostMapping
-    public CustomerDtos.CustomerResponse createCustomer(@Valid @RequestBody CustomerDtos.CreateCustomerRequest request) {
+    @PostMapping("/add")
+    public CustomerDtos.CustomerResponse createCustomer(
+            @Valid @RequestBody CustomerDtos.CreateCustomerRequest request) {
         return customerService.createCustomer(request);
     }
 }
