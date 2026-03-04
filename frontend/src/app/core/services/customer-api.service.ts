@@ -13,5 +13,4 @@ export class CustomerApiService {
     return this.http.post(`${this.base}/customers/add`, payload, {
       headers: getAuthHeaders(),
     });
-  }
 }

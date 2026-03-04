@@ -143,5 +143,8 @@ button[mat-raised-button] {
     height: auto;
     padding: 12px 14px 16px;
     flex-wrap: wrap;
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 }

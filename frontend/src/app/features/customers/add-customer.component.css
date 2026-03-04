@@ -80,6 +80,13 @@
 
 form {
   padding: 8px 16px 0;
+.customer-card {
+  max-width: 900px;
+  margin: 24px auto;
+}
+
+.customer-card mat-card-title {
+  margin-bottom: 16px;
 }
 
 .form-grid {
@@ -177,6 +184,9 @@ form {
 
 .tag-icon {
   transform: rotate(-45deg);
+  gap: 16px;
+  margin-top: 12px;
+  margin-bottom: 16px;
 }
 
 .full-width {

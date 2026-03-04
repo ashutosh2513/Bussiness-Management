@@ -43,7 +43,7 @@ export class AddProductComponent implements OnInit {
     purchasePrice: [null as number | null, [Validators.required, Validators.min(0)]],
     sellingPrice: [null as number | null, [Validators.required, Validators.min(0)]],
     gstPercent: [null as number | null, [Validators.required, Validators.min(0)]],
-    skuCode: [""],
+    skuCode: ["", [Validators.required]],
     retailerId: [1],
   });
 
