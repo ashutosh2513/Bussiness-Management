@@ -2,6 +2,7 @@ import { CurrencyPipe, NgClass, NgFor, NgIf } from "@angular/common";
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
+import { ShellComponent } from "../../core/layout/shell.component";
 
 type StockState = "In Stock" | "Low Stock" | "Out of Stock";
 
@@ -18,7 +19,15 @@ interface ProductRow {
 
 @Component({
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, FormsModule, RouterLink, CurrencyPipe],
+  imports: [
+    NgFor,
+    NgIf,
+    NgClass,
+    FormsModule,
+    RouterLink,
+    CurrencyPipe,
+    ShellComponent,
+  ],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.css",
 })

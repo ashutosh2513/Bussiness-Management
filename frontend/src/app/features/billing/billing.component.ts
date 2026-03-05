@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { CartState } from '../../core/state/cart.state';
 import { ApiService } from '../../core/services/api.service';
+import { ShellComponent } from '../../core/layout/shell.component';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor, ShellComponent],
   templateUrl: './billing.component.html',
   styleUrl: './billing.component.css'
 })

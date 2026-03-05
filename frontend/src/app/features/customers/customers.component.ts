@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NgFor } from "@angular/common";
 import { RouterLink } from "@angular/router";
+import { ShellComponent } from "../../core/layout/shell.component";
 
 interface CustomerRow {
   id: number;
@@ -17,7 +18,7 @@ interface CustomerRow {
 @Component({
   selector: "app-customers",
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, ShellComponent],
   templateUrl: "./customers.component.html",
   styleUrl: "./customers.component.css",
 })
