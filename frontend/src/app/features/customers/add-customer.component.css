@@ -26,11 +26,11 @@
 }
 
 .customer-modal {
-  width: min(900px, 96vw);
+  width: min(800px, 96vw);
   max-height: calc(100vh - 20px);
+  overflow-y: auto;
   border-radius: 14px;
   border: 1px solid #d5deef;
-  overflow: hidden;
   box-shadow: 0 12px 34px rgba(22, 47, 93, 0.24);
 }
 

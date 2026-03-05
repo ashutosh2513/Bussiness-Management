@@ -37,7 +37,7 @@ export class AddCustomerComponent {
     email: [""],
     gstNumber: [""],
     address: [""],
-    retailerId: [1],
+    // retailerId: [1],
   });
 
   submitting = false;
@@ -56,29 +56,27 @@ export class AddCustomerComponent {
       email: raw.email ?? "",
       gstNumber: raw.gstNumber ?? "",
       address: raw.address ?? "",
-      retailerId: Number(raw.retailerId) || 1,
+      // retailerId: Number(raw.retailerId) || 1,
     };
 
-    this.customerApi
-      .saveCustomer(payload)
-      .subscribe({
-        next: () => {
-          this.snackBar.open("Customer Added Successfully", "Close", {
-            duration: 3000,
-          });
-          this.customerForm.reset({
-            name: "",
-            phone: "",
-            email: "",
-            gstNumber: "",
-            address: "",
-            retailerId: 1,
-          });
-          this.submitting = false;
-        },
-        error: () => {
-          this.submitting = false;
-        },
-      });
+    this.customerApi.saveCustomer(payload).subscribe({
+      next: () => {
+        this.snackBar.open("Customer Added Successfully", "Close", {
+          duration: 3000,
+        });
+        this.customerForm.reset({
+          name: "",
+          phone: "",
+          email: "",
+          gstNumber: "",
+          address: "",
+          //  retailerId: 1,
+        });
+        this.submitting = false;
+      },
+      error: () => {
+        this.submitting = false;
+      },
+    });
   }
 }

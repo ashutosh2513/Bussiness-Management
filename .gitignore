@@ -4,3 +4,4 @@ frontend/.angular/
 backend/target/
 frontend/.angular/
 frontend/package-lock.json
+logs/
