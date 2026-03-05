@@ -6,6 +6,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/customers")
 @RequiredArgsConstructor
@@ -16,5 +18,11 @@ public class CustomerController {
     public CustomerDtos.CustomerResponse createCustomer(
             @Valid @RequestBody CustomerDtos.CreateCustomerRequest request) {
         return customerService.createCustomer(request);
+    }
+
+    @PostMapping("/get")
+    public List<CustomerDtos.CustomerListItem> getCustomers(
+            @RequestBody(required = false) CustomerDtos.GetCustomersRequest request) {
+        return customerService.getCustomers(request);
     }
 }
