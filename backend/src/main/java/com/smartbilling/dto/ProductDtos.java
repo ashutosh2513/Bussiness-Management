@@ -42,4 +42,21 @@ public class ProductDtos {
             UUID retailerId,
             LocalDate createdAt
     ) {}
+
+    public record GetProductsRequest(
+            UUID id
+    ) {}
+
+    public record ProductListItem(
+            UUID id,
+            String name,
+            UUID categoryId,
+            UUID unitId,
+            Double purchasePrice,
+            Double sellingPrice,
+            Double gstPercent,
+            String skuCode,
+            UUID retailerId,
+            LocalDate createdAt
+    ) {}
 }

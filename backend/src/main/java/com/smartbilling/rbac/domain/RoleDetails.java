@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "role_dtls")
-public class RoleDetails {
+public class RoleDetails extends RbacAuditFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_dtl_id")
@@ -20,12 +20,4 @@ public class RoleDetails {
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "created_at")
-    private java.time.LocalDateTime createdAt;
-
-    @PrePersist
-    void onCreate() {
-        createdAt = java.time.LocalDateTime.now();
-    }
 }

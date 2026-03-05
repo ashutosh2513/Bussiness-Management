@@ -27,4 +27,18 @@ public class CustomerDtos {
             String email,
             LocalDate createdAt
     ) {}
+
+    public record GetCustomersRequest(
+            UUID id
+    ) {}
+
+    public record CustomerListItem(
+            UUID id,
+            String name,
+            String phone,
+            String email,
+            String gstNumber,
+            String address,
+            LocalDate createdAt
+    ) {}
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "priv_prnt_mpg")
-public class PrivilegeParentMapping {
+public class PrivilegeParentMapping extends RbacAuditFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

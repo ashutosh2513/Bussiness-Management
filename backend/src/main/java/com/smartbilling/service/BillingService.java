@@ -121,7 +121,7 @@ public class BillingService {
     }
 
     private String nextInvoiceNo() {
-        int last = invoiceRepository.findTopByOrderByCreatedAtDesc()
+        int last = invoiceRepository.findTopByOrderByCrtDtDesc()
                 .map(i -> i.getInvoiceNo().replaceAll("\\D", ""))
                 .filter(s -> !s.isBlank())
                 .map(Integer::parseInt)

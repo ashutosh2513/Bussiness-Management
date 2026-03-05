@@ -13,21 +13,19 @@ import java.time.LocalDateTime;
 @Setter
 @MappedSuperclass
 public abstract class RbacAuditFields {
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+    @Column(name = "crt_dt", updatable = false)
+    private LocalDateTime crtDt;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Column(name = "lst_updt_dt")
+    private LocalDateTime lstUpdtDt;
 
     @PrePersist
     void onCreate() {
-        LocalDateTime now = LocalDateTime.now();
-        this.createdAt = now;
-        this.updatedAt = now;
+        this.crtDt = LocalDateTime.now();
     }
 
     @PreUpdate
     void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
+        this.lstUpdtDt = LocalDateTime.now();
     }
 }
