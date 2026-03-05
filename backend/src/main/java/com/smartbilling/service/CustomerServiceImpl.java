@@ -88,4 +88,14 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.FORBIDDEN, "Unable to resolve logged-in user"));
     }
+
+    private User getLoggedInUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getName())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unable to resolve logged-in user");
+        }
+
+        return userRepository.findByEmailIgnoreCase(authentication.getName())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.FORBIDDEN, "Unable to resolve logged-in user"));
+    }
 }
