@@ -1,44 +1,6 @@
 <div class="dash-page" *ngIf="data$ | async as raw">
   <div class="dash-shell" *ngIf="asData(raw) as d">
-    <aside class="sidebar">
-      <div class="sidebar-brand">
-        <div class="logo-badge">SB</div>
-        <div class="brand-text">SmartBilling</div>
-      </div>
-
-      <div class="nav-group">
-        <p class="group-title">MAIN</p>
-        <a routerLink="/dashboard" class="nav-item active">?? Dashboard</a>
-        <a routerLink="/billing" class="nav-item">?? Billing / POS</a>
-        <a href="#" class="nav-item">?? Invoices</a>
-      </div>
-
-      <div class="nav-group">
-        <p class="group-title">CATALOG</p>
-        <a routerLink="/products" class="nav-item">?? Products</a>
-        <a href="#" class="nav-item">?? Inventory <span class="pill">3</span></a>
-        <a href="#" class="nav-item">??? Categories</a>
-      </div>
-
-      <div class="nav-group">
-        <p class="group-title">PEOPLE</p>
-        <a href="#" class="nav-item">?? Customers</a>
-        <a href="#" class="nav-item">?? Suppliers</a>
-      </div>
-
-      <div class="nav-group">
-        <p class="group-title">FINANCE</p>
-        <a href="#" class="nav-item">?? Ledger</a>
-        <a href="#" class="nav-item">?? Payments</a>
-      </div>
-
-      <a href="#" class="help-docs">Help &amp; Docs</a>
-
-      <div class="sidebar-foot">
-        <a href="#" class="foot-link">? Help</a>
-        <a href="#" class="foot-link">? Help &amp; Docs</a>
-      </div>
-    </aside>
+    <app-shell></app-shell>
 
     <main class="main-area">
       <header class="topbar">
@@ -49,7 +11,10 @@
 
         <div class="search-wrap">
           <span class="search-icon">??</span>
-          <input type="text" placeholder="Search products, invoices, customers..." />
+          <input
+            type="text"
+            placeholder="Search products, invoices, customers..."
+          />
           <span class="list-icon">=</span>
           <div class="avatar">????</div>
         </div>
@@ -86,7 +51,8 @@
       </section>
 
       <section class="alert-strip">
-        ?? <strong>Low Stock:</strong> Coca Cola 500ml (5 units), Surf Excel 1kg (0 units), Notebook A4 (0 units).
+        ?? <strong>Low Stock:</strong> Coca Cola 500ml (5 units), Surf Excel 1kg
+        (0 units), Notebook A4 (0 units).
         <a href="#">Reorder Now ?</a>
       </section>
 
@@ -98,7 +64,12 @@
           </div>
 
           <div class="chart-area">
-            <svg viewBox="0 0 760 300" preserveAspectRatio="none" role="presentation" aria-hidden="true">
+            <svg
+              viewBox="0 0 760 300"
+              preserveAspectRatio="none"
+              role="presentation"
+              aria-hidden="true"
+            >
               <defs>
                 <linearGradient id="line-fill" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stop-color="#6cc0f3" stop-opacity="0.3" />
@@ -110,10 +81,14 @@
               <line x1="20" y1="170" x2="740" y2="170" class="grid" />
               <line x1="20" y1="230" x2="740" y2="230" class="grid" />
 
-              <path d="M40,230 C90,220 110,220 140,220 C170,220 210,205 240,198 C270,191 300,196 340,199 C380,202 410,180 440,175 C470,170 510,166 540,161 C570,156 620,140 640,130 C660,120 690,100 700,86 L700,260 L40,260 Z"
-                    fill="url(#line-fill)" />
-              <path d="M40,230 C90,220 110,220 140,220 C170,220 210,205 240,198 C270,191 300,196 340,199 C380,202 410,180 440,175 C470,170 510,166 540,161 C570,156 620,140 640,130 C660,120 690,100 700,86"
-                    class="line" />
+              <path
+                d="M40,230 C90,220 110,220 140,220 C170,220 210,205 240,198 C270,191 300,196 340,199 C380,202 410,180 440,175 C470,170 510,166 540,161 C570,156 620,140 640,130 C660,120 690,100 700,86 L700,260 L40,260 Z"
+                fill="url(#line-fill)"
+              />
+              <path
+                d="M40,230 C90,220 110,220 140,220 C170,220 210,205 240,198 C270,191 300,196 340,199 C380,202 410,180 440,175 C470,170 510,166 540,161 C570,156 620,140 640,130 C660,120 690,100 700,86"
+                class="line"
+              />
 
               <circle cx="40" cy="230" r="5" class="pt" />
               <circle cx="140" cy="220" r="5" class="pt" />
@@ -126,7 +101,10 @@
             </svg>
 
             <div class="ticks">
-              <div class="tick" *ngFor="let tick of revenueTicks; let i = index">
+              <div
+                class="tick"
+                *ngFor="let tick of revenueTicks; let i = index"
+              >
                 <span>{{ tick }}</span>
                 <small>{{ weekDays[i] }}</small>
               </div>
@@ -160,12 +138,12 @@
         <article class="panel summary-panel">
           <div class="panel-head slim">
             <h3>?? Top Selling Products</h3>
-            <span>›</span>
+            <span>></span>
           </div>
 
           <div class="chips">
-            <a href="#" class="chip">Google <span>›</span></a>
-            <a href="#" class="chip">Facebook <span>›</span></a>
+            <a href="#" class="chip">Google <span>></span></a>
+            <a href="#" class="chip">Facebook <span>></span></a>
           </div>
         </article>
 
@@ -180,10 +158,11 @@
               <p>Net with isoun</p>
               <div class="progress"><span></span></div>
             </div>
-            <span class="arrow">›</span>
+            <span class="arrow">></span>
           </div>
         </article>
       </section>
     </main>
   </div>
 </div>
+

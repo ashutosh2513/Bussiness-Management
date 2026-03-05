@@ -1,1 +1,24 @@
-/* Billing component styles */
+:host {
+  display: block;
+}
+
+.billing-page {
+  min-height: 100vh;
+  background: #f3f6fb;
+}
+
+.billing-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 292px 1fr;
+}
+
+.billing-main {
+  padding: 20px;
+}
+
+@media (max-width: 920px) {
+  .billing-shell {
+    grid-template-columns: 1fr;
+  }
+}

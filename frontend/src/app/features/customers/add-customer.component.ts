@@ -7,6 +7,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import { CustomerRequest } from "../../core/models/customer.model";
 import { CustomerApiService } from "../../core/services/customer-api.service";
+import { RouterLink } from "@angular/router";
+import { CustomersComponent } from "./customers.component";
 
 @Component({
   selector: "app-add-customer",
@@ -18,6 +20,8 @@ import { CustomerApiService } from "../../core/services/customer-api.service";
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
+    RouterLink,
+    CustomersComponent,
   ],
   templateUrl: "./add-customer.component.html",
   styleUrl: "./add-customer.component.css",
@@ -33,7 +37,7 @@ export class AddCustomerComponent {
     email: [""],
     gstNumber: [""],
     address: [""],
-    retailerId: [1],
+    // retailerId: [1],
   });
 
   submitting = false;
@@ -45,26 +49,34 @@ export class AddCustomerComponent {
     }
 
     this.submitting = true;
-    this.customerApi
-      .saveCustomer(this.customerForm.getRawValue() as CustomerRequest)
-      .subscribe({
-        next: () => {
-          this.snackBar.open("Customer Added Successfully", "Close", {
-            duration: 3000,
-          });
-          this.customerForm.reset({
-            name: "",
-            phone: "",
-            email: "",
-            gstNumber: "",
-            address: "",
-            retailerId: 1,
-          });
-          this.submitting = false;
-        },
-        error: () => {
-          this.submitting = false;
-        },
-      });
+    const raw = this.customerForm.getRawValue();
+    const payload: CustomerRequest = {
+      name: raw.name ?? "",
+      phone: raw.phone ?? "",
+      email: raw.email ?? "",
+      gstNumber: raw.gstNumber ?? "",
+      address: raw.address ?? "",
+      // retailerId: Number(raw.retailerId) || 1,
+    };
+
+    this.customerApi.saveCustomer(payload).subscribe({
+      next: () => {
+        this.snackBar.open("Customer Added Successfully", "Close", {
+          duration: 3000,
+        });
+        this.customerForm.reset({
+          name: "",
+          phone: "",
+          email: "",
+          gstNumber: "",
+          address: "",
+          //  retailerId: 1,
+        });
+        this.submitting = false;
+      },
+      error: () => {
+        this.submitting = false;
+      },
+    });
   }
 }

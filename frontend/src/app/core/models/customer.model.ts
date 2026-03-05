@@ -4,5 +4,5 @@ export interface CustomerRequest {
   email: string;
   gstNumber: string;
   address: string;
-  retailerId: number;
+  // retailerId: number;
 }

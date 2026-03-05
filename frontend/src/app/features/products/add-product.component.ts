@@ -6,6 +6,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
+import { RouterLink } from "@angular/router";
 import { forkJoin } from "rxjs";
 import {
   ProductCategoryOption,
@@ -25,6 +26,7 @@ import { ProductApiService } from "../../core/services/product-api.service";
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
+    RouterLink,
   ],
   templateUrl: "./add-product.component.html",
   styleUrl: "./add-product.component.css",

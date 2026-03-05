@@ -1,16 +1,56 @@
-<div class="min-h-screen grid grid-cols-1 md:grid-cols-[240px_1fr] bg-slate-50">
-  <aside class="bg-slate-900 text-white p-4">
-    <h1 class="font-bold text-xl">SmartBilling</h1>
-    <p class="text-xs text-slate-300 mt-1" *ngIf="auth.session() as s">{{ s.fullName }} • {{ s.role }}</p>
-    <nav class="mt-4 space-y-2">
-      <a routerLink="/" class="block">Landing</a>
-      <a routerLink="/dashboard" class="block">Dashboard</a>
-      <a routerLink="/billing" class="block">Billing</a>
-      <a routerLink="/products" class="block">Products</a>
-      <a routerLink="/login" class="block">Login</a>
-      <a routerLink="/register" class="block">Register</a>
-      <button *ngIf="auth.session()" (click)="auth.logout()" class="text-left text-rose-300">Logout</button>
-    </nav>
-  </aside>
-  <main class="p-4"><ng-content /></main>
-</div>
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-badge">SB</div>
+    <div class="brand-text">SmartBilling</div>
+  </div>
+
+  <div class="nav-group">
+    <p class="group-title">MAIN</p>
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="nav-item"
+      >Dashboard</a
+    >
+    <a
+      routerLink="/billing"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="nav-item"
+      >Billing / POS</a
+    >
+    <a href="#" class="nav-item">?? Invoices</a>
+  </div>
+
+  <div class="nav-group">
+    <p class="group-title">CATALOG</p>
+    <a routerLink="/products" routerLinkActive="active" class="nav-item"
+      >Products</a
+    >
+    <a href="#" class="nav-item">?? Inventory <span class="pill">3</span></a>
+    <a href="#" class="nav-item">??? Categories</a>
+  </div>
+
+  <div class="nav-group">
+    <p class="group-title">PEOPLE</p>
+    <a routerLink="/customers" routerLinkActive="active" class="nav-item"
+      >Customers</a
+    >
+    <a href="#" class="nav-item">?? Suppliers</a>
+  </div>
+
+  <div class="nav-group">
+    <p class="group-title">FINANCE</p>
+    <a href="#" class="nav-item">?? Ledger</a>
+    <a href="#" class="nav-item">?? Payments</a>
+  </div>
+
+  <a href="#" class="help-docs">Help</a>
+  <a href="#" class="help-docs">Docs</a>
+
+  <!-- <div class="sidebar-foot">
+    <a href="#" class="foot-link">Help</a>
+    <a href="#" class="foot-link">Docs</a>
+  </div> -->
+</aside>
