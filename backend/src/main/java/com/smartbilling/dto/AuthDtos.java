@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 public class AuthDtos {
     public record RegisterRequest(
             @NotBlank String fullName,
@@ -22,6 +24,7 @@ public class AuthDtos {
             String token,
             String fullName,
             String email,
-            Enums.Role role
+            Enums.Role role,
+            List<RbacDtos.PrivilegeModuleDto> privileges
     ) {}
 }

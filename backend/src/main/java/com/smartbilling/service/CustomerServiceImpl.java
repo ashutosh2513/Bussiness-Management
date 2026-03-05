@@ -8,6 +8,8 @@ import com.smartbilling.repository.CustomerRepository;
 import com.smartbilling.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,8 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     @AuditableAction("CUSTOMER_CREATE")
     public CustomerDtos.CustomerResponse createCustomer(CustomerDtos.CreateCustomerRequest request) {
-        User retailer = userRepository.findById(request.retailerId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid retailerId"));
+        User retailer = getLoggedInUser();
 
         Customer customer = new Customer();
         customer.setName(request.name().trim());
@@ -44,5 +45,15 @@ public class CustomerServiceImpl implements CustomerService {
                 saved.getEmail(),
                 saved.getCreatedAt().atZone(ZoneOffset.UTC).toLocalDate()
         );
+    }
+
+    private User getLoggedInUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getName())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unable to resolve logged-in user");
+        }
+
+        return userRepository.findByEmailIgnoreCase(authentication.getName())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.FORBIDDEN, "Unable to resolve logged-in user"));
     }
 }

@@ -2,6 +2,7 @@ package com.smartbilling.service;
 
 import com.smartbilling.domain.User;
 import com.smartbilling.dto.AuthDtos;
+import com.smartbilling.dto.RbacDtos;
 import com.smartbilling.repository.UserRepository;
 import com.smartbilling.security.JwtService;
 import jakarta.transaction.Transactional;
@@ -18,6 +19,7 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final PrivilegeService privilegeService;
 
     @Transactional
     public AuthDtos.AuthResponse register(AuthDtos.RegisterRequest request) {
@@ -55,6 +57,7 @@ public class AuthService {
                         "role", user.getRole().name()
                 )
         );
-        return new AuthDtos.AuthResponse(token, user.getFullName(), user.getEmail(), user.getRole());
+        java.util.List<RbacDtos.PrivilegeModuleDto> privileges = privilegeService.getPrivilegesForRoleCode(user.getRole().name());
+        return new AuthDtos.AuthResponse(token, user.getFullName(), user.getEmail(), user.getRole(), privileges);
     }
 }
