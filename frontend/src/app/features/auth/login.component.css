@@ -135,11 +135,13 @@
 
 .input-icon {
   width: 45px;
-  text-align: center;
-  font-size: 1.05rem;
-  color: #3d4b61;
-  opacity: 0.9;
+  /* text-align: center; */
+  /* font-size: 1.05rem; */
+  /* color: #3d4b61; */
+  /* opacity: .9; */
   border-right: 1px solid #e2e9f3;
+  padding-left: 10px;
+  color: gray;
 }
 
 .input-wrap input {

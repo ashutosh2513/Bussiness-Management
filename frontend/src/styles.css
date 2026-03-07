@@ -3,4 +3,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --sb-control-border: #d3deee;
+  --sb-control-border-strong: #c8d7eb;
+  --sb-control-radius: 10px;
+  --sb-control-height: 40px;
+  --sb-control-bg: #ffffff;
+  --sb-control-text: #425677;
+  --sb-primary: #2f8feb;
+  --sb-primary-strong: #277fd2;
+}
 body { margin: 0; font-family: Inter, Arial, sans-serif; }
