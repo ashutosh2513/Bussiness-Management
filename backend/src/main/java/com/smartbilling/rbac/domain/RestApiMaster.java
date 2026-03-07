@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "rest_api_mst")
-public class RestApiMaster {
+public class RestApiMaster extends RbacAuditFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "api_id")

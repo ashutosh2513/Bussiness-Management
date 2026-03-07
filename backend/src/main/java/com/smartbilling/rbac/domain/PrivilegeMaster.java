@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "priv_mst")
-public class PrivilegeMaster {
+public class PrivilegeMaster extends RbacAuditFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "priv_id")

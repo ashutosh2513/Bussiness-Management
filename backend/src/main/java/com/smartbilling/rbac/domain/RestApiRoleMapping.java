@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "rest_api_role_mpg")
-public class RestApiRoleMapping {
+public class RestApiRoleMapping extends RbacAuditFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
